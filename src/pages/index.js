@@ -1,11 +1,14 @@
 import React from 'react'
 
 import SEO from '../components/Seo'
+import NavContainer from '../components/NavContainer'
+
+import '../styles/main.scss'
 
 const IndexPage = () => (
   <>
-    <SEO title="Home" />
-    <h1>Restro</h1>
+    <SEO title="Welcome" />
+    <NavContainer />
   </>
 )
 

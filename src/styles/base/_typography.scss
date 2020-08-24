@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette|Nunito+Sans:400,700&display=swap');
+
+// Fonts
+$nunito-sans: 'Nunito Sans';
+$courgette: 'Courgette';
+
+$primary-text-font: $nunito-sans, Arial, sans-serif;
+$secondary-header-font: $courgette, Helvetica, serif;
+
+html,
+body {
+  font-size: 16px;
+  font-family: $primary-text-font;
+  color: $dark-shades;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  line-height: 1.3;
+}
+
+input {
+  font-size: 0.75em;
+}
+
+@include for-size(tablet-landscape-up) {
+  input {
+    font-size: 0.9em;
+  }
+}

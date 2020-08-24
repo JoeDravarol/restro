@@ -1,0 +1,20 @@
+@include for-size(tablet-portrait-up) {
+  // To wrap body/layout to create bleed effect
+  .layout-container {
+    width: 90vw;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+}
+
+@include for-size(desktop-up) {
+  .layout-container {
+    max-width: 1000px;
+  }
+}
+
+@include for-size(big-desktop-up) {
+  .layout-container {
+    max-width: 1200px;
+  }
+}

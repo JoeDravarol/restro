@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+label,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  margin-top: 0.5em;
+  border-radius: 5px;
+
+  &:focus {
+    border-color: $dark-accent;
+  }
+}

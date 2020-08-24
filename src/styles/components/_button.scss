@@ -17,4 +17,10 @@
     background: $dark-accent;
     color: $light-shades;
   }
+
+  &--text-only {
+    background: none;
+    border-color: transparent;
+    outline: inherit;
+  }
 }

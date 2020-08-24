@@ -1,0 +1,89 @@
+.reservation-container {
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+}
+
+.restaurant-name {
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.reservation-review-heading {
+  margin-bottom: 0.75em;
+  text-transform: capitalize;
+  text-align: center;
+  color: $dark-accent;
+}
+
+.infos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 2em 0;
+  text-align: center;
+}
+
+.reservation-info {
+  &__title {
+    margin-bottom: 0.25em;
+    color: $dark-accent;
+  }
+
+  &__desc {
+    color: $dark-accent;
+    font-size: 1.2em;
+  }
+}
+
+.reservation-notice {
+  padding: 0 1.5em;
+  color: $dark-accent;
+  font-size: 0.95em;
+}
+
+.review-reservation__footer {
+  background: $light-shades;
+  padding: 1em 0.25em;
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+// Edit Form
+.reservation-edit__form {
+  padding: 2em;
+  padding-top: 0;
+
+  input {
+    margin-bottom: 1em;
+  }
+}
+
+.confirm-reservation__button {
+  &--edit {
+    display: block;
+    margin-left: auto;
+  }
+}
+
+@include for-size(tablet-portrait-up) {
+  .reservation-container {
+    border: 1px solid $light-accent;
+  }
+}
+
+@include for-size(big-desktop-up) {
+  .restaurant-name {
+    margin-bottom: 0.5em;
+  }
+
+  .reservation-info {
+    &__title {
+      font-size: 1.5em;
+    }
+
+    &__desc {
+      font-size: 1.3em;
+    }
+  }
+}

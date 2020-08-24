@@ -3,4 +3,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &--review-reservation {
+    height: 100vh;
+    background: $light-shades;
+  }
+}
+
+@include for-size(tablet-portrait-up) {
+  .wrapper {
+    &--review-reservation {
+      background-image: url('https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
 }

@@ -20,8 +20,13 @@ export const ReservationFormProvider = ({ children }) => {
     setFormState(prevState => ({ ...prevState, [name]: value }))
   }
 
+  const resetState = () => {
+    setFormState(initialState)
+  }
+
   const formMethods = {
     handleChange,
+    resetState,
   }
 
   return (

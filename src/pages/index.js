@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AnchorLink } from 'gatsby-plugin-anchor-links'
 import { navigate } from 'gatsby'
 
+import ContactInfo from '../components/ContactInfo'
 import Content from '../components/Content'
 import Layout from '../components/Layout'
 import NavContainer from '../components/NavContainer'
@@ -15,9 +16,19 @@ import '../styles/main.scss'
 const IndexPage = () => {
   const { formState, formMethods } = useContext(ReservationFormContext)
 
+  // Temporary Data
+  const contactDetails = {
+    address: {
+      street: '11 Guild Street',
+      city: 'London',
+      postcode: 'NW10 2QU',
+    },
+    phone: '07079250918',
+    email: 'info@restro.uk',
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
-
     navigate('/review-reservation')
   }
 
@@ -116,6 +127,52 @@ const IndexPage = () => {
             {...formState}
           />
         </section>
+
+        <footer id="contact" className="primary-footer container">
+          <div className="info">
+            <ContactInfo
+              title={'Opening'}
+              infoData={[
+                {
+                  subTitle: 'Monday - Friday',
+                  description: '12:00pm - 10:00pm',
+                },
+                {
+                  subTitle: 'Saturday - Sunday',
+                  description: '01:00pm - 11:00pm',
+                },
+              ]}
+            />
+
+            <ContactInfo
+              title={'Location'}
+              infoData={[
+                {
+                  subTitle: 'Address',
+                  description: contactDetails.address.street,
+                },
+                {
+                  subTitle: 'City & Postcode',
+                  description: `${contactDetails.address.city}, ${contactDetails.address.postcode}`,
+                },
+              ]}
+            />
+
+            <ContactInfo
+              title={'Contacts'}
+              infoData={[
+                {
+                  subTitle: 'Email',
+                  description: contactDetails.email,
+                },
+                {
+                  subTitle: 'Phone',
+                  description: contactDetails.phone,
+                },
+              ]}
+            />
+          </div>
+        </footer>
       </Layout>
     </>
   )

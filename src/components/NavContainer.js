@@ -33,10 +33,10 @@ const NavContainer = ({ children }) => {
 
 NavContainer.defaultProps = {
   children: [
-    <NavLink title="Home" linkTo="/" />,
-    <NavLink title="Menu" linkTo="/menu" />,
-    <NavLink title="Contact" linkTo="/#contact" />,
-    <NavLink title="Dashboard" linkTo="/admin" />,
+    <NavLink key="Home" title="Home" linkTo="/" />,
+    <NavLink key="Menu" title="Menu" linkTo="/menu" />,
+    <NavLink key="Contact" title="Contact" linkTo="/#contact" />,
+    <NavLink key="Dashboard" title="Dashboard" linkTo="/admin" />,
   ],
 }
 

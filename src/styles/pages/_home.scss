@@ -65,6 +65,42 @@
   text-align: center;
 }
 
+// Contact
+.primary-footer {
+  background: $light-shades;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 180px);
+  justify-content: space-around;
+
+  &__title {
+    margin: 0.75em 0 0.5em;
+    text-transform: capitalize;
+  }
+
+  &__sub-title {
+    color: $dark-accent;
+    text-transform: capitalize;
+  }
+
+  &__desc {
+    color: $dark-accent;
+    margin-bottom: 0.75em;
+  }
+}
+
+@include for-size(tablet-portrait-up) {
+  .info {
+    justify-content: space-evenly;
+
+    &__title {
+      margin-top: 0;
+    }
+  }
+}
+
 @include for-size(tablet-landscape-up) {
   .reservation {
     &__form {
@@ -104,5 +140,15 @@
     min-height: 300px;
     display: grid;
     align-items: center;
+  }
+
+  .info {
+    &__title {
+      font-size: 1.6em;
+    }
+
+    &__desc {
+      font-size: 1.1em;
+    }
   }
 }

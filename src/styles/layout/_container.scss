@@ -1,4 +1,22 @@
+.container {
+  margin: 1.25em 0;
+  padding: 1em;
+  box-shadow: -21px 24px 50px -12px rgba(0, 0, 0, 0.15);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 @include for-size(tablet-portrait-up) {
+  .container {
+    padding: 2em;
+  }
+
   // To wrap body/layout to create bleed effect
   .layout-container {
     width: 90vw;
@@ -8,6 +26,10 @@
 }
 
 @include for-size(desktop-up) {
+  .container {
+    margin: 3em 0;
+  }
+
   .layout-container {
     max-width: 1000px;
   }

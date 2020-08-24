@@ -7,7 +7,11 @@
 @import './base/typography';
 
 @import './layout/container';
+@import './layout/home-featured-images';
 @import './layout/nav';
 @import './layout/wrapper';
+
+@import './components/button';
+@import './components/content';
 
 @import './pages/home';

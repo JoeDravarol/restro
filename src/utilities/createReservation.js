@@ -12,10 +12,8 @@ export const createReservation = async ({ name, email, guest, date, time }) => {
     name,
     email,
     guest,
-    reservationDate: date,
-    reservationTime: time,
-    canceledReservation: false,
-    sentReservation: false,
+    date,
+    time,
   }
 
   reservationRef.add(reservation)

@@ -1,6 +1,9 @@
 import React from 'react'
 import { ReservationFormProvider } from './src/context/ReservationFormContext'
+import { AuthProvider } from './src/context/AuthContext'
 
 export const wrapRootElement = ({ element }) => (
-  <ReservationFormProvider>{element}</ReservationFormProvider>
+  <AuthProvider>
+    <ReservationFormProvider>{element}</ReservationFormProvider>
+  </AuthProvider>
 )

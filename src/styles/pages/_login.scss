@@ -1,0 +1,38 @@
+.login {
+  &-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 1.75em;
+  }
+
+  &__form {
+    display: grid;
+    grid-row-gap: 1em;
+  }
+
+  &__heading {
+    text-align: center;
+    margin-bottom: 0.75em;
+  }
+
+  &__button {
+    justify-self: end;
+    margin: 0;
+    min-width: 80px;
+  }
+
+  &__error {
+    color: $danger;
+    font-size: 0.95em;
+  }
+}
+
+@include for-size(tablet-portrait-up) {
+  .login {
+    &-container {
+      border: 1px solid $light-accent;
+      border-radius: 5px;
+      box-shadow: -21px 24px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}

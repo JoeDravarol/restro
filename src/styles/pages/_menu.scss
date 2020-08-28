@@ -1,0 +1,109 @@
+.menu {
+  &__heading {
+    text-align: center;
+    font-size: 1.75em;
+    margin: 1em 0 1.5em;
+  }
+}
+
+.course {
+  &-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: 1.75em;
+    color: $brand-color;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 0.75em;
+  }
+}
+
+.food {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  grid-gap: 0.5em;
+  margin-bottom: 2.5em;
+  padding: 0 2em;
+
+  &__title {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  &__desc {
+    order: 3;
+    color: $dark-accent;
+    text-transform: capitalize;
+    font-size: 0.9em;
+
+    &--large {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__price {
+    justify-self: end;
+    font-size: 1.1em;
+  }
+}
+
+@include for-size(tablet-landscape-up) {
+  .course {
+    &-container {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 2.5em;
+    }
+  }
+
+  .food {
+    padding: 0;
+
+    &__title,
+    &__price {
+      font-size: 1.2em;
+    }
+
+    &__desc {
+      font-size: 1em;
+    }
+  }
+}
+
+@include for-size(big-desktop-up) {
+  .menu {
+    &__heading {
+      font-size: 2em;
+    }
+  }
+
+  .course {
+    &-container {
+      grid-column-gap: 8em;
+      grid-row-gap: 2em;
+    }
+
+    &__title {
+      font-size: 2em;
+    }
+  }
+
+  .food {
+    margin-bottom: 3.5em;
+
+    &__title {
+      font-size: 1.5em;
+    }
+
+    &__price {
+      font-size: 1.4em;
+    }
+
+    &__desc {
+      font-size: 1.1em;
+    }
+  }
+}

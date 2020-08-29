@@ -3,7 +3,7 @@ import { Link, navigate } from 'gatsby'
 
 import ReservationEditForm from '../components/ReservationEditForm'
 import ReservationFormContext from '../context/ReservationFormContext'
-import ReservationInfo from '../components/ReservationInfo'
+import ReservationReviewInfo from '../components/ReservationReviewInfo'
 
 import { createReservation } from '../utilities/createReservation'
 
@@ -41,7 +41,7 @@ const ReservationReviewPage = ({ location }) => {
               />
             </>
           ) : (
-            <ReservationInfo
+            <ReservationReviewInfo
               handleEdit={handleEdit}
               handleSubmit={handleSubmit}
               reservationInfo={formState}

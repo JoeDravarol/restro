@@ -1,6 +1,11 @@
 import React from 'react'
+import { formatDateToDMY } from '../utilities/date'
 
-const ReservationInfo = ({ handleEdit, handleSubmit, reservationInfo }) => {
+const ReservationReviewInfo = ({
+  handleEdit,
+  handleSubmit,
+  reservationInfo,
+}) => {
   return (
     <>
       <div className="reservation-info">
@@ -18,7 +23,9 @@ const ReservationInfo = ({ handleEdit, handleSubmit, reservationInfo }) => {
 
           <div>
             <h3 className="reservation-info__title">Date</h3>
-            <p className="reservation-info__desc">{reservationInfo.date}</p>
+            <p className="reservation-info__desc">
+              {formatDateToDMY(reservationInfo.date)}
+            </p>
           </div>
 
           <div>
@@ -49,4 +56,4 @@ const ReservationInfo = ({ handleEdit, handleSubmit, reservationInfo }) => {
   )
 }
 
-export default ReservationInfo
+export default ReservationReviewInfo

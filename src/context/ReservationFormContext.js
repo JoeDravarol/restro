@@ -1,8 +1,9 @@
 import React, { useState, createContext } from 'react'
+import { todaysDate } from '../utilities/date'
 
 const ReservationFormContext = createContext()
 // Temporary data
-let today = new Date().toISOString().substr(0, 10)
+let today = todaysDate()
 const initialState = {
   name: '',
   email: '',

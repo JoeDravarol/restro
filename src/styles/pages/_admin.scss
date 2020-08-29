@@ -1,0 +1,47 @@
+.date-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+  padding: 1em;
+}
+
+.reservation-data {
+  background: #fff;
+  padding: 1em 1.5em;
+  margin: 2em 0;
+  border: 2px solid $light-shades;
+  border-left: 5px solid $brand-color;
+  border-radius: 5px;
+  box-shadow: -21px 24px 50px -12px rgba(0, 0, 0, 0.15);
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &__name {
+    margin-bottom: 0.5em;
+  }
+
+  &__dl {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 350px;
+  }
+
+  &__dt {
+    grid-row: 1;
+    font-weight: 600;
+    margin-bottom: 0.3em;
+  }
+}
+
+@include for-size(tablet-portrait-up) {
+  .date-container {
+    padding: 0;
+  }
+}

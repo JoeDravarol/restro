@@ -1,55 +1,32 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { navigate } from 'gatsby'
 
 import Layout from '../components/Layout'
+import Loader from '../components/Loader'
 import NavContainer from '../components/NavContainer'
 import NavLink from '../components/NavLink'
 import ReservationDashboardInfoList from '../components/ReservationDashboardInfoList'
 
 import AuthContext from '../context/AuthContext'
+import { useSubscribeCollection } from '../hooks/useSubscribeCollection'
 import { todaysDate, formatDateToDMY } from '../utilities/date'
-
-const fakeData = [
-  {
-    name: 'John Doe',
-    guest: '2',
-    date: '2020-08-28',
-    time: '17:30',
-  },
-  {
-    name: 'Samuel Jackson',
-    guest: '1',
-    date: '2020-08-28',
-    time: '22:00',
-  },
-  {
-    name: 'Mathew Jackson',
-    guest: '4',
-    date: '2020-08-29',
-    time: '22:00',
-  },
-  {
-    name: 'Mathew Jackson',
-    guest: '4',
-    date: '2020-08-28',
-    time: '17:00',
-  },
-]
 
 const AdminPage = () => {
   const today = todaysDate()
   const { user, logout } = useContext(AuthContext)
   const [date, setDate] = useState(today)
-  const [reservations, setReservations] = useState([])
-
-  useEffect(() => {
-    setReservations(fakeData)
-  }, [])
+  const { data: reservations, loading, error } = useSubscribeCollection(
+    'reservations'
+  )
 
   if (user) {
     navigate('/login')
     return null
   }
+
+  if (loading) return <Loader />
+
+  if (error) console.error(error)
 
   return (
     <>

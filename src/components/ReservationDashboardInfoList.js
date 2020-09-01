@@ -24,7 +24,7 @@ const ReservationDashboardInfoList = ({ date, reservations }) => {
     <>
       {filteredReservations.map(reservation => (
         <ReservationDashboardInfo
-          key={reservation.name}
+          key={reservation.id}
           {...reservation}
           date={formatDateToDMY(reservation.date)}
         />

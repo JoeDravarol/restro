@@ -67,12 +67,24 @@
 }
 
 @include for-size(tablet-portrait-up) {
+  .wrapper--review-reservation {
+    background-image: url('../images/brooke-lark-macaroons-md.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
   .reservation-container {
     border: 1px solid $light-accent;
+    opacity: 0.9;
   }
 }
 
 @include for-size(big-desktop-up) {
+  .wrapper--review-reservation {
+    background-image: url('../images/brooke-lark-macaroons-lg.jpg');
+  }
+
   .restaurant-name {
     margin-bottom: 0.5em;
   }

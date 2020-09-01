@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AnchorLink } from 'gatsby-plugin-anchor-links'
-import { navigate } from 'gatsby'
+import Image from 'gatsby-image'
+import { navigate, graphql } from 'gatsby'
 
 import ContactInfo from '../components/ContactInfo'
 import Content from '../components/Content'
@@ -10,10 +11,9 @@ import ReservationForm from '../components/ReservationForm'
 import SEO from '../components/Seo'
 
 import ReservationFormContext from '../context/ReservationFormContext'
-
 import '../styles/main.scss'
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
   const { formState, formMethods } = useContext(ReservationFormContext)
 
   // Temporary Data
@@ -39,10 +39,10 @@ const IndexPage = () => {
 
       <Layout>
         <article className="container content-container">
-          <img
-            src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+          <Image
             className="content__image"
-            alt="food"
+            fluid={data.vegetableSalad.childImageSharp.fluid}
+            alt="A family share size of vegetable Salad on white ceramic plate"
           />
           <Content
             title="Choosing quality food"
@@ -66,10 +66,10 @@ const IndexPage = () => {
         </article>
 
         <article id="about" className="container content-container">
-          <img
-            src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+          <Image
             className="content__image"
-            alt="food"
+            fluid={data.slicedOrange.childImageSharp.fluid}
+            alt="Sliced blood orange with white-and-pink petal flower"
           />
           <Content
             title="About us"
@@ -83,25 +83,25 @@ const IndexPage = () => {
 
         <article className="container content-container">
           <div className="featured__images">
-            <img
-              src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+            <Image
               className="featured__image"
-              alt="food"
+              fluid={data.bakePie.childImageSharp.fluid}
+              alt="Bake pie near white ceramic teapot"
             />
-            <img
-              src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+            <Image
               className="featured__image"
-              alt="food"
+              fluid={data.pasta.childImageSharp.fluid}
+              alt="Three round white plates with pasta near two glass of wine"
             />
-            <img
-              src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+            <Image
               className="featured__image"
-              alt="food"
+              fluid={data.fruitSalad.childImageSharp.fluid}
+              alt="Fruit salad on gray bowl"
             />
-            <img
-              src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+            <Image
               className="featured__image"
-              alt="food"
+              fluid={data.eggSalad.childImageSharp.fluid}
+              alt="Poached egg with vegetable and tomatoes on blue plate"
             />
           </div>
           <Content
@@ -179,3 +179,45 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+export const fluidImage = graphql`
+  fragment fluidImage on File {
+    childImageSharp {
+      fluid(maxWidth: 800) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+`
+
+export const pageQuery = graphql`
+  query {
+    vegetableSalad: file(
+      relativePath: { eq: "brooke-lark-vegetable-salad.jpg" }
+    ) {
+      ...fluidImage
+    }
+
+    slicedOrange: file(
+      relativePath: { eq: "brooke-lark-sliced-blood-orange.jpg" }
+    ) {
+      ...fluidImage
+    }
+
+    bakePie: file(relativePath: { eq: "brooke-lark-bake-pie.jpg" }) {
+      ...fluidImage
+    }
+
+    pasta: file(relativePath: { eq: "brooke-lark-pasta.jpg" }) {
+      ...fluidImage
+    }
+
+    fruitSalad: file(relativePath: { eq: "brooke-lark-fruit-salad.jpg" }) {
+      ...fluidImage
+    }
+
+    eggSalad: file(relativePath: { eq: "brooke-lark-poached-egg-salad.jpg" }) {
+      ...fluidImage
+    }
+  }
+`

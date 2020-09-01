@@ -1,15 +1,17 @@
 import React from 'react'
 import MenuItem from './MenuItem'
 
+import { appendPoundSignToPrice } from '../utilities/formatPrice'
+
 const MenuItemList = ({ menuItems }) => {
   return (
     <>
-      {menuItems.map((food, idx) => (
+      {menuItems.map(food => (
         <MenuItem
-          key={food.title + idx}
-          title={food.title}
+          key={food.name}
+          title={food.name}
           description={food.description}
-          price={food.price}
+          price={appendPoundSignToPrice(food.price)}
         />
       ))}
     </>

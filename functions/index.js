@@ -2,34 +2,31 @@ const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 const sgMail = require('@sendgrid/mail')
 
+const SENDGRID_API_KEY = functions.config().sendgrid.key
+const EMAIL_TEMPLATE_ID = functions.config().sendgrid.template
+const RESTAURANT_EMAIL = functions.config().restaurant.email
+
 admin.initializeApp()
-sgMail.setApiKey(functions.config().sendgrid.key)
+sgMail.setApiKey(SENDGRID_API_KEY)
 
 exports.sendReservationEmail = functions.firestore
   .document(`reservations/{reservationId}`)
   .onCreate((snap, context) => {
     const reservationInfo = snap.data()
     const { name, email, guest, date, time } = reservationInfo
-    const msgBody = `Your reservation at Restro for ${guest} guests on ${date} at ${time} has been confirmed. Table is kept for 15 minutes after reservation time. We appreaciate
-    you being on time.`
 
     const msg = {
       to: email,
-      from: 'info@restro.co.uk',
-      subject: `${name}'s Restro reservation`,
-      text: msgBody,
-      html: `<strong>${msgBody}</strong>`,
+      from: RESTAURANT_EMAIL,
+      templateId: EMAIL_TEMPLATE_ID,
+      subject: `Restro reservation`,
+      dynamic_template_data: {
+        name,
+        guest,
+        date,
+        time,
+      },
     }
 
-    ;(async () => {
-      try {
-        await sgMail.send(msg)
-      } catch (error) {
-        console.error(error)
-
-        if (error.response) {
-          console.error(error.response.body)
-        }
-      }
-    })()
+    return sgMail.send(msg)
   })

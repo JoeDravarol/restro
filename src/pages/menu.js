@@ -5,6 +5,7 @@ import Loader from '../components/Loader'
 import NavContainer from '../components/NavContainer'
 import NavLink from '../components/NavLink'
 import MenuItemList from '../components/MenuItemList'
+import Seo from '../components/Seo'
 
 import { useSubscribeCollection } from '../hooks/useSubscribeCollection'
 
@@ -17,7 +18,7 @@ const MenuPage = () => {
 
   return (
     <>
-      <SEO title="Menu" />
+      <Seo title="Menu" />
       <NavContainer siteTitle="Restro">
         <NavLink title="Home" linkTo="/" />
         <NavLink title="Menu" linkTo="/menu" />

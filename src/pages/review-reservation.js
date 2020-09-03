@@ -6,27 +6,34 @@ import ReservationFormContext from '../context/ReservationFormContext'
 import ReservationReviewInfo from '../components/ReservationReviewInfo'
 
 import { createReservation } from '../utilities/createReservation'
+import ReviewModalContent from '../components/ReviewModalContent'
 
-const ReservationReviewPage = ({ location }) => {
+const ReservationReviewPage = () => {
   const { formState, formMethods } = useContext(ReservationFormContext)
   const [editReservation, setEditReservation] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   const handleSubmit = e => {
     e.preventDefault()
 
     createReservation(formState)
+    setShowModal(true)
     formMethods.resetState()
-    navigate('/')
-    console.log('Thank you for your reservation, we will email you shortly.')
   }
 
   const handleEdit = () => setEditReservation(true)
 
+  // Hacky redirect
+  if (!formState.email) {
+    navigate('/')
+    return null
+  }
+
   return (
-    <>
+    <div>
       <main className="wrapper wrapper--review-reservation">
         <div className="reservation-container">
-          <Link to="/" title="home">
+          <Link to="/" title="Back to home">
             <h1 className="restaurant-name">Restro</h1>
           </Link>
 
@@ -49,7 +56,8 @@ const ReservationReviewPage = ({ location }) => {
           )}
         </div>
       </main>
-    </>
+      <ReviewModalContent show={showModal} />
+    </div>
   )
 }
 

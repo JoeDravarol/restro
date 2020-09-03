@@ -66,6 +66,33 @@
   }
 }
 
+// Modal
+.review-modal {
+  &__heading {
+    text-align: center;
+    font-size: 1.6em;
+  }
+
+  &__desc {
+    text-align: center;
+    color: $dark-accent;
+    line-height: 1.6;
+
+    &--line-break {
+      display: block;
+    }
+  }
+
+  &__body {
+    min-height: 200px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 340px;
+  }
+}
+
 @include for-size(tablet-portrait-up) {
   .wrapper--review-reservation {
     background-image: url('../images/brooke-lark-macaroons-md.jpg');
@@ -77,6 +104,20 @@
   .reservation-container {
     border: 1px solid $light-accent;
     opacity: 0.9;
+  }
+
+  .review-modal {
+    &__heading {
+      font-size: 2em;
+    }
+
+    &__desc {
+      font-size: 1.2em;
+    }
+
+    &__body {
+      min-width: 450px;
+    }
   }
 }
 

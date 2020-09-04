@@ -7,20 +7,23 @@ export const useSubscribeCollection = collectionRef => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    try {
-      const ref = firestore.collection(collectionRef)
-      var unsubscribe = ref.onSnapshot(snapshot => {
+    const ref = firestore.collection(collectionRef)
+    const unsubscribe = ref.onSnapshot(
+      snapshot => {
+        setLoading(true)
         const data = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
         }))
+
         setData(data)
-      })
-    } catch (error) {
-      setError(error.message)
-    } finally {
-      setLoading(false)
-    }
+        setLoading(false)
+      },
+      error => {
+        setError(error)
+        setLoading(false)
+      }
+    )
 
     return function cleanup() {
       unsubscribe()

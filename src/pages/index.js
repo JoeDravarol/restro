@@ -6,26 +6,32 @@ import { navigate, graphql } from 'gatsby'
 import ContactInfo from '../components/ContactInfo'
 import Content from '../components/Content'
 import Layout from '../components/Layout'
+import Loader from '../components/Loader'
 import NavContainer from '../components/NavContainer'
 import ReservationForm from '../components/ReservationForm'
 import SEO from '../components/Seo'
 
 import ReservationFormContext from '../context/ReservationFormContext'
+import { useSubscribeCollection } from '../hooks/useSubscribeCollection'
 import '../styles/main.scss'
 
 const IndexPage = ({ data }) => {
   const { formState, formMethods } = useContext(ReservationFormContext)
+  const {
+    data: [restaurantInfo],
+    loading,
+    error,
+  } = useSubscribeCollection('restaurantInfo')
 
-  // Temporary Data
-  const contactDetails = {
-    address: {
-      street: '11 Guild Street',
-      city: 'London',
-      postcode: 'NW10 2QU',
-    },
-    phone: '07079250918',
-    email: 'info@restro.uk',
-  }
+  if (loading) return <Loader />
+
+  if (error) console.error(error)
+
+  const {
+    address: { city, postcode, street },
+    contact: { email, phone },
+    trading: { weekdays, weekends },
+  } = restaurantInfo
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -134,12 +140,12 @@ const IndexPage = ({ data }) => {
               title={'Opening'}
               infoData={[
                 {
-                  subTitle: 'Monday - Friday',
-                  description: '12:00pm - 10:00pm',
+                  subTitle: weekdays.days,
+                  description: `${weekdays.time.opening} - ${weekdays.time.closing}`,
                 },
                 {
-                  subTitle: 'Saturday - Sunday',
-                  description: '01:00pm - 11:00pm',
+                  subTitle: weekends.days,
+                  description: `${weekends.time.opening} - ${weekends.time.closing}`,
                 },
               ]}
             />
@@ -149,11 +155,11 @@ const IndexPage = ({ data }) => {
               infoData={[
                 {
                   subTitle: 'Address',
-                  description: contactDetails.address.street,
+                  description: street,
                 },
                 {
                   subTitle: 'City & Postcode',
-                  description: `${contactDetails.address.city}, ${contactDetails.address.postcode}`,
+                  description: `${city}, ${postcode}`,
                 },
               ]}
             />
@@ -163,11 +169,11 @@ const IndexPage = ({ data }) => {
               infoData={[
                 {
                   subTitle: 'Email',
-                  description: contactDetails.email,
+                  description: email,
                 },
                 {
                   subTitle: 'Phone',
-                  description: contactDetails.phone,
+                  description: phone,
                 },
               ]}
             />

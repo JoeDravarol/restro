@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { AnchorLink } from 'gatsby-plugin-anchor-links'
 import Modal from './Modal'
 

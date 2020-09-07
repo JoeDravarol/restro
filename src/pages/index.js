@@ -13,6 +13,7 @@ import SEO from '../components/Seo'
 
 import ReservationFormContext from '../context/ReservationFormContext'
 import { useSubscribeCollection } from '../hooks/useSubscribeCollection'
+import { useGetCollection } from '../hooks/useGetCollection'
 import '../styles/main.scss'
 
 const IndexPage = ({ data }) => {
@@ -21,7 +22,7 @@ const IndexPage = ({ data }) => {
     data: [restaurantInfo],
     loading,
     error,
-  } = useSubscribeCollection('restaurantInfo')
+  } = useGetCollection('restaurantInfo')
 
   if (loading) return <Loader />
 

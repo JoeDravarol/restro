@@ -19,7 +19,7 @@ const AdminPage = () => {
     'reservations'
   )
 
-  if (user) {
+  if (!user) {
     navigate('/login')
     return null
   }

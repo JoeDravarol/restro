@@ -1,30 +1,36 @@
 import { useState, useEffect } from 'react'
 import { firestore } from '../firebase'
 import { collectIdsAndData } from '../utilities/collectIdsAndData'
+import { getItem, setItem, itemInSession } from '../utilities/sessionStorage'
 
-export const useSubscribeCollection = collectionRef => {
+export const useGetCollection = collectionRef => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const ref = firestore.collection(collectionRef)
-    const unsubscribe = ref.onSnapshot(
-      snapshot => {
-        setLoading(true)
-        const data = snapshot.docs.map(collectIdsAndData)
+    async function fetchCollection() {
+      const ref = firestore.collection(collectionRef)
 
+      try {
+        setLoading(true)
+        const snapshot = await ref.get()
+        const data = snapshot.docs.map(collectIdsAndData)
         setData(data)
-        setLoading(false)
-      },
-      error => {
+        setItem(collectionRef, data)
+      } catch (error) {
         setError(error)
+      } finally {
         setLoading(false)
       }
-    )
+    }
 
-    return function cleanup() {
-      unsubscribe()
+    if (itemInSession(collectionRef)) {
+      const result = getItem(collectionRef)
+      setData(result)
+      setLoading(false)
+    } else {
+      fetchCollection()
     }
   }, [collectionRef])
 

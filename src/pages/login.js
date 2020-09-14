@@ -8,7 +8,7 @@ import SEO from '../components/Seo'
 import AuthContext from '../context/AuthContext'
 
 const LoginPage = () => {
-  const { user, login } = useContext(AuthContext)
+  const { user, login, loginAsGuest } = useContext(AuthContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
@@ -74,9 +74,23 @@ const LoginPage = () => {
               />
             </label>
             <p className="login__error">{errorMessage}</p>
-            <button type="submit" className="login__button button button--dark">
-              Login
-            </button>
+
+            <footer className="login__footer">
+              <button
+                type="button"
+                onClick={loginAsGuest}
+                className="login__button button"
+              >
+                Login as guest
+              </button>
+
+              <button
+                type="submit"
+                className="login__button button button--dark"
+              >
+                Login
+              </button>
+            </footer>
           </form>
         </div>
       </main>

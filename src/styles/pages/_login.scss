@@ -25,6 +25,11 @@
     color: $danger;
     font-size: 0.95em;
   }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 @include for-size(tablet-portrait-up) {

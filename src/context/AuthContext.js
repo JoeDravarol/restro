@@ -28,8 +28,12 @@ export const AuthProvider = ({ children }) => {
     return await auth.signOut()
   }
 
+  const loginAsGuest = async () => {
+    return await auth.signInAnonymously()
+  }
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, loginAsGuest }}>
       {children}
     </AuthContext.Provider>
   )

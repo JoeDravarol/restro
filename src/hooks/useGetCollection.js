@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { firestore } from '../firebase'
+import { useFirebase } from './useFirebase'
 import { collectIdsAndData } from '../utilities/collectIdsAndData'
 import { getItem, setItem, itemInSession } from '../utilities/sessionStorage'
 
@@ -7,6 +7,7 @@ export const useGetCollection = collectionRef => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const { firestore } = useFirebase()
 
   useEffect(() => {
     async function fetchCollection() {
@@ -25,6 +26,8 @@ export const useGetCollection = collectionRef => {
       }
     }
 
+    if (!firestore) return
+
     if (itemInSession(collectionRef)) {
       const result = getItem(collectionRef)
       setData(result)
@@ -32,7 +35,7 @@ export const useGetCollection = collectionRef => {
     } else {
       fetchCollection()
     }
-  }, [collectionRef])
+  }, [collectionRef, firestore])
 
   return { data, loading, error }
 }

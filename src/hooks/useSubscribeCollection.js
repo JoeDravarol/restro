@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react'
-import { firestore } from '../firebase'
+import { useFirebase } from './useFirebase'
 import { collectIdsAndData } from '../utilities/collectIdsAndData'
 
 export const useSubscribeCollection = collectionRef => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const { firestore } = useFirebase()
 
   useEffect(() => {
+    if (!firestore) return
+
     const ref = firestore.collection(collectionRef)
     const unsubscribe = ref.onSnapshot(
       snapshot => {
@@ -26,7 +29,7 @@ export const useSubscribeCollection = collectionRef => {
     return function cleanup() {
       unsubscribe()
     }
-  }, [collectionRef])
+  }, [collectionRef, firestore])
 
   return { data, loading, error }
 }

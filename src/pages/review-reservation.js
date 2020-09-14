@@ -4,6 +4,7 @@ import { Link, navigate } from 'gatsby'
 import ReservationEditForm from '../components/ReservationEditForm'
 import ReservationFormContext from '../context/ReservationFormContext'
 import ReservationReviewInfo from '../components/ReservationReviewInfo'
+import SEO from '../components/Seo'
 
 import { createReservation } from '../utilities/createReservation'
 import ReviewModalContent from '../components/ReviewModalContent'
@@ -24,40 +25,43 @@ const ReservationReviewPage = () => {
   const handleEdit = () => setEditReservation(true)
 
   // Hacky redirect
-  if (!formState.email) {
+  if (!formState.email && !showModal) {
     navigate('/')
     return null
   }
 
   return (
-    <div>
-      <main className="wrapper wrapper--review-reservation">
-        <div className="reservation-container">
-          <Link to="/" title="Back to home">
-            <h1 className="restaurant-name">Restro</h1>
-          </Link>
+    <>
+      <SEO title="Review Reservation" />
+      <div>
+        <main className="wrapper wrapper--review-reservation">
+          <div className="reservation-container">
+            <Link to="/" title="Back to home">
+              <h1 className="restaurant-name">Restro</h1>
+            </Link>
 
-          {editReservation ? (
-            <>
-              <h2 className="reservation-review-heading">Edit reservation</h2>
+            {editReservation ? (
+              <>
+                <h2 className="reservation-review-heading">Edit reservation</h2>
 
-              <ReservationEditForm
+                <ReservationEditForm
+                  handleSubmit={handleSubmit}
+                  handleChange={formMethods.handleChange}
+                  reservationInfo={formState}
+                />
+              </>
+            ) : (
+              <ReservationReviewInfo
+                handleEdit={handleEdit}
                 handleSubmit={handleSubmit}
-                handleChange={formMethods.handleChange}
                 reservationInfo={formState}
               />
-            </>
-          ) : (
-            <ReservationReviewInfo
-              handleEdit={handleEdit}
-              handleSubmit={handleSubmit}
-              reservationInfo={formState}
-            />
-          )}
-        </div>
-      </main>
-      <ReviewModalContent show={showModal} />
-    </div>
+            )}
+          </div>
+        </main>
+        <ReviewModalContent show={showModal} />
+      </div>
+    </>
   )
 }
 

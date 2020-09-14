@@ -12,7 +12,6 @@ import ReservationForm from '../components/ReservationForm'
 import SEO from '../components/Seo'
 
 import ReservationFormContext from '../context/ReservationFormContext'
-import { useSubscribeCollection } from '../hooks/useSubscribeCollection'
 import { useGetCollection } from '../hooks/useGetCollection'
 import '../styles/main.scss'
 

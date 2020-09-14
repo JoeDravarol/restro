@@ -3,6 +3,7 @@ import { navigate } from 'gatsby'
 
 import NavContainer from '../components/NavContainer'
 import NavLink from '../components/NavLink'
+import SEO from '../components/Seo'
 
 import AuthContext from '../context/AuthContext'
 
@@ -39,6 +40,7 @@ const LoginPage = () => {
 
   return (
     <>
+      <SEO title="Login to Restro" />
       <NavContainer siteTitle="Restro">
         <NavLink title="Home" linkTo="/" />
         <NavLink title="Menu" linkTo="/menu" />

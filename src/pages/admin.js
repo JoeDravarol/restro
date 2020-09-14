@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import NavContainer from '../components/NavContainer'
 import NavLink from '../components/NavLink'
 import ReservationDashboardInfoList from '../components/ReservationDashboardInfoList'
+import SEO from '../components/Seo'
 
 import AuthContext from '../context/AuthContext'
 import { useSubscribeCollection } from '../hooks/useSubscribeCollection'
@@ -30,6 +31,7 @@ const AdminPage = () => {
 
   return (
     <>
+      <SEO title="Reservation dashboard" />
       <NavContainer>
         <NavLink title="Home" linkTo="/" />
         <NavLink title="Menu" linkTo="/" />

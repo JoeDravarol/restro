@@ -6,7 +6,7 @@ Fully responsive restaurant web app using Gatsby.js, where customer can create r
 
 ## Demo
 
-[Live version on Netifly]()
+[Live version on Netifly](https://restro-mediterranean.netlify.app/)
 
 ### Available Paths/Routes
 

@@ -20,6 +20,7 @@ function ReservationForm({
           id="date"
           type="date"
           value={date}
+          min={date}
           onChange={handleChange}
         />
       </div>

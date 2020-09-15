@@ -1,19 +1,22 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 import { todaysDate } from '../utilities/date'
 
 const ReservationFormContext = createContext()
-// Temporary data
-let today = todaysDate()
+
 const initialState = {
   name: '',
   email: '',
   guest: 1,
-  date: today,
+  date: todaysDate(),
   time: '12:00',
 }
 
 export const ReservationFormProvider = ({ children }) => {
   const [formState, setFormState] = useState(initialState)
+
+  useEffect(() => {
+    setFormState(prevState => ({ ...prevState, date: todaysDate() }))
+  }, [])
 
   const handleChange = e => {
     const { name, value } = e.target

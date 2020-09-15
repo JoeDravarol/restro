@@ -1,99 +1,70 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+![Preview of Restro homepage](src/images/homepage-preview.png)
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+# Restro
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+Fully responsive restaurant web app using Gatsby.js, where customer can create reservation to the restaurant. There is also a dashboard panel for restaurant staff in `/admin` to manage reservations.
 
-## 🚀 Quick start
+## Demo
 
-1.  **Create a Gatsby site.**
+[Live version on Netifly]()
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+### Available Paths/Routes
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+- `/menu`
+- `/login`
+- `/admin`
 
-1.  **Start developing.**
+## Table of contents
 
-    Navigate into your new site’s directory and start it up.
+- [Getting Started](https://github.com/joedravarol/restro#getting-started)
+- [Built With](https://github.com/joedravarol/restro#built-with)
+- [Contributors](https://github.com/joedravarol/restro#contributors)
+- [License](https://github.com/joedravarol/restro#license)
+- [Acknowledgement](https://github.com/joedravarol/restro#acknowledgement)
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+## Getting Started
 
-1.  **Open the source code and start editing!**
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-    Your site is now running at `http://localhost:8000`!
+### Prerequisite
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+- Node.js
+- Npm
+- Gatsby cli
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+### Installing
 
-## 🧐 What's inside?
+1. Fork this repository on Github.
+1. Clone your forked repository onto your local computer.
+1. Use `$ cd restro` to move into the project directory.
+1. Create a Firebase project for web application at [https://firebase.google.com/](https://firebase.google.com/) by clicking `Get started`.
+1. Create `.env.development` file and paste your Firebase credentials. You can see how to name the env variables in `firebase.js` file.
+1. `$ npm install` to install the required dependencies.
+1. `$ gatsby develop` to run a local development server.
+1. Explore and enjoy!
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+## Built with
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+- Gatsby.js
+- Scss
+- Firebase Firestore
+- Firebase Functions
+- Continuous deployment with Netifly
+- Prettier
+- ESLint
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+## Contributors
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+- **Joe Lee** - Initial work
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+## License
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+This project is licensed under the MIT license - see the [LICENSE](LICENSE) file for details
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+## Acknowledgement
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+- [Brooke Lark](http://brookelark.com/) - Images on [Unsplash](https://unsplash.com/@brookelark)
+- [Ofspace Team](https://dribbble.com/ofspacedesign) - [Design Inspiration](https://dribbble.com/shots/5480149-Cafe-Bistro-Restaurant-landing-page)
+- [Saiful Khan](https://dribbble.com/saifulkhan6) - [Design Inspiration](https://dribbble.com/shots/6114960-Food-Restaurant-Landing-Page)
+- [Fabiane Molon](https://dribbble.com/fabianemolon) - [Design Inspiration](https://dribbble.com/shots/6848780-The-Brekky)
+- [Cody Ogden](https://codyogden.com/) - [Loader](https://codepen.io/codyogden/pen/qxjKKy)

@@ -13,7 +13,6 @@ import SEO from '../components/Seo'
 
 import ReservationFormContext from '../context/ReservationFormContext'
 import { useGetCollection } from '../hooks/useGetCollection'
-import '../styles/main.scss'
 
 const IndexPage = ({ data }) => {
   const { formState, formMethods } = useContext(ReservationFormContext)

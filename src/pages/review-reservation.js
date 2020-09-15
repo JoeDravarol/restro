@@ -45,8 +45,10 @@ const ReservationReviewPage = () => {
 
   // Hacky redirect
   if (!formState.email && !showModal) {
-    navigate('/')
-    return null
+    if (typeof window !== 'undefined') {
+      navigate('/')
+      return null
+    }
   }
 
   return (

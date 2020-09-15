@@ -13,6 +13,13 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
 
+  if (user) {
+    if (typeof window !== 'undefined') {
+      navigate('/admin')
+      return null
+    }
+  }
+
   const handleSubmit = async e => {
     e.preventDefault()
 
@@ -31,11 +38,6 @@ const LoginPage = () => {
 
     setEmail('')
     setPassword('')
-  }
-
-  if (user) {
-    navigate('/admin')
-    return null
   }
 
   return (

@@ -21,8 +21,10 @@ const AdminPage = () => {
   )
 
   if (!user) {
-    navigate('/login')
-    return null
+    if (typeof window !== 'undefined') {
+      navigate('/login')
+      return null
+    }
   }
 
   if (loading) return <Loader />

@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "restro",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A restaurant web app to create reservations to Restro Mediterranean Restaurant.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Joe Dravarol <joedravarol@gmail.com>",
   "dependencies": {
     "firebase": "^7.19.0",
     "firebase-admin": "^9.1.1",

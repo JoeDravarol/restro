@@ -31,6 +31,25 @@ describe('Login to Dashboard', () => {
       .click()
   })
 
+  it('login with incorrect credentials', () => {
+    const email = 'fake@fake.com'
+    const password = '123456'
+    // ANTI-PATTERN?
+    const loginErrorMessage = 'There is no user record corresponding to this identifier. The user may have been deleted.'
+
+    // it login with credentials
+    cy.findByLabelText(/Email/i)
+      .type(email)
+
+    cy.findByLabelText(/Password/i)
+      .type(password)
+
+    cy.findByRole('button', { name: 'Login' })
+      .click()
+
+    cy.findByText(loginErrorMessage)
+  })
+
   it('login with credentials', () => {
     const email = 'preview@restro.co.uk'
     const password = 'guest123'

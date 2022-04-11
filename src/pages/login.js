@@ -83,7 +83,7 @@ const LoginPage = () => {
                 onClick={loginAsGuest}
                 className="login__button button"
               >
-                Login as guest
+                Preview
               </button>
 
               <button
